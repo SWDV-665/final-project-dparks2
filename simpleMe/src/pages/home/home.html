@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title text-center>simpleMe Tracker App</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3 class="no-item" text-center>Click below to add a task</h3>
+  <ion-list>
+    <ion-card color="{{ task.category }}" *ngFor="let task of loadTasks(); let i = index">
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-10 col-6 col-3>
+              <h2 class="task-name">Task: {{ task.title }}</h2>
+              <h3 class="task-time">Time Spent: {{ task.time }} minutes</h3>
+              <h3 text-capitalize class="task-category">: {{ task.category }}</h3>
+            </ion-col>
+            <ion-col>
+              <button (click)="deleteTask(task, i)" ion-fab mini color="dark">
+                <ion-icon name="backspace"></ion-icon>
+              </button>
+              <button (click)="editTask(task, i)" ion-fab mini color="dark">
+                <ion-icon name="create"></ion-icon>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button (click)="shareTask(task, i)" ion-fab mini color="dark">
+                <ion-icon name="share"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  <ion-fab center bottom>
+    <button (click)="addTask()" ion-fab mini color="light">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
